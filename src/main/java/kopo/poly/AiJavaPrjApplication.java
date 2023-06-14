@@ -10,6 +10,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Slf4j
@@ -103,6 +104,22 @@ public class AiJavaPrjApplication implements CommandLineRunner {
             log.info("DB에 저장된 이메일 : " + dto.getEmail());
             log.info("DB에 저장된 주소 : " + dto.getAddr());
         });
+
+        pDTO = new StudentDTO();
+
+        pDTO.setUserId("hglee67");
+
+        rList = studentService.deleteStudent(pDTO);
+
+        rList.forEach(dto -> {
+            log.info("DB에 저장된 아이디 : " + dto.getUserId());
+            log.info("DB에 저장된 이름 : " + dto.getUserName());
+            log.info("DB에 저장된 이메일 : " + dto.getEmail());
+            log.info("DB에 저장된 주소 : " + dto.getAddr());
+        });
+
+        List<StudentDTO> pList = new ArrayList<>();
+
 
 
         log.info("자바 프로그래밍 종료!");
